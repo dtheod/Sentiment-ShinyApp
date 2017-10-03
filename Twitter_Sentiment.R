@@ -195,37 +195,3 @@ final_features$score_sentiment <- 0
 final_features <- final_features %>%
   mutate(score_sentiment = ifelse(Score == 0, "neutral",
               ifelse(Score > 0, "positive", "negative")))
-
-         
-highchart() %>% 
-  hc_chart(type = "bar") %>% 
-  hc_title(text = "A highcharter chart") %>% 
-  hc_plotOptions(column = list(
-    dataLabels = list(enabled = FALSE),
-    stacking = "column",
-    colorByPoint = TRUE,
-    enableMouseTracking = TRUE)) %>%
-  hc_xAxis(categories = t_initial_data) %>% 
-  hc_add_series(data = c(3900,  4200,  5700,  8500, 11900, 2000),
-                name = "Downloads", color = "#28B463")
-
-
-Browser <- c('Positive','Negative')
-Pct <- c(70, 30)
-Total <- c(70, 30)
-
-table <- data.frame(Browser, Pct, Total)
-
-highchart() %>%
-  hc_title(text = "Browsers Data") %>%
-  hc_add_series_labels_values(1, 1, type = "pie", size = '60%',color ="#FDFEFE",
-                              dataLabels = FALSE) %>%
-  hc_add_series_labels_values(table$Browser, table$Total, type = "pie",  size = '100%',
-                              innerSize = "60%") %>%
-  hc_colors(c("#1A5276", "#E74C3C"))
-  
-
-
-
-
-
